@@ -3,7 +3,7 @@ package yn.experiments;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
-public class RegexTest {
+public class RegexMatcherResetTest {
 
   public static void main(String[] args) {
     int times = 1000000;
