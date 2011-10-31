@@ -1,4 +1,4 @@
-package yn.regex;
+package yn.string;
 
 public class SplitExperiments {
 	public static void main(String[] args) {
