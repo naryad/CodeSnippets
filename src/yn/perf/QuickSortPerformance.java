@@ -5,20 +5,15 @@ import java.util.Date;
 import java.util.Random;
 
 /**
- * @author HP
- *
- */
-/**
- * @author HP
- *
+ * @author NY
  */
 public class QuickSortPerformance {
 	public static void main(String[] args) throws InterruptedException {
-		final int size = 50000000;
+		final int size = 100000000;
 		final int [] array = new int [size];
 		final int [] array1 = new int [size];
 		final Random rand = new Random();
-		Thread indingenousQuickSort = new Thread(new Runnable() {
+		Thread indigenousQuickSort = new Thread(new Runnable() {
 			public void run() {
 				for (int i = 0; i < size; i++) {
 					array[i] = rand.nextInt();
@@ -31,7 +26,7 @@ public class QuickSortPerformance {
 				
 			}
 		}, "indigenous-sort");
-		indingenousQuickSort.start();
+		indigenousQuickSort.start();
 		
 		Thread builtinQuickSort = new Thread(new Runnable() {
 			public void run() {
@@ -46,7 +41,7 @@ public class QuickSortPerformance {
 		}, "built-in-sort");
 		builtinQuickSort.start();
 
-		Thread [] threads = new Thread[]{builtinQuickSort, indingenousQuickSort};
+		Thread [] threads = new Thread[]{builtinQuickSort, indigenousQuickSort};
 		for (Thread thread : threads) {
 			thread.join();
 		}

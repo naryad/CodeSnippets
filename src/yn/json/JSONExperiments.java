@@ -7,8 +7,8 @@ import java.util.List;
 import org.codehaus.jackson.JsonGenerationException;
 import org.codehaus.jackson.map.JsonMappingException;
 
-import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
+import com.google.gson.JsonObject;
 
 /**
  * @author HP
@@ -26,6 +26,7 @@ public class JSONExperiments {
 		listOfString.add("A");listOfString.add("B");
 		listListStr.add(listOfString);
 		System.out.println(new GsonBuilder().create().toJson(listListStr));
+		
 	}
 
 	

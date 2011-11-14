@@ -1,6 +1,7 @@
 package yn.regex;
 
 import java.util.Arrays;
+import java.util.Collections;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 import java.util.regex.PatternSyntaxException;
@@ -8,13 +9,42 @@ import java.util.regex.PatternSyntaxException;
 public class Regex {
 	
 	public static void main(String[] args) {
-		System.out.println("Split experiments start here");
-		String str = "a^b^c";
-		System.out.println(Arrays.toString(str.split("\\^")));
-		System.out.println("Split experiments end here");
+		patternforsinglequote();
+		urlPartMatcher();
+		escapeDoubleQuote();
+		embeddedModifiers();
+		matcher();
+		replaceTextBetweenParentheses();
+		regexforfieldset();
+		replaceSpanInAHTML();
+		//regexCausingStackOverflowException();
 		
-		System.out.println("Pattern experimetns start here");
+		punctuationRegex();
+		primeRegex(7);
 		
+		//reluctant quantifiers  example
+		reluctantQuant();
+		
+		//content -type regex
+		contentType();
+	}
+
+	private static void replaceSpanInAHTML() {
+        String s = "noise <span title=\"whatever\">something I want to preserve</span>...";
+        s = s.replaceAll("<span\\s+[^>]*title=(['\"])(.*?)\\1[^>]*>(.*?)</span>", "($3)");
+        System.out.println(s);		
+	}
+
+	private static void embeddedModifiers() {
+		//embedded modifiers
+		String ftw = "f\nftw";
+		System.out.println(ftw.matches("(?si).*Ftw.*"));
+		Pattern pattern = Pattern.compile(".*ftw.*", Pattern.DOTALL);
+		Matcher matcher = pattern.matcher("f\nftw");
+		System.out.println(matcher.matches());		
+	}
+
+	private static void urlPartMatcher() {
 		String URL = "https://localhost:8080/sbs/01.00/sip/dreamworks/v/01.00/cui/print/$fwVer/{$fwVer}/$lang/en/$model/{$model}/$region/us/$imageBg/{$imageBg}/$imageH/{$imageH}/$imageSz/{$imageSz}/$imageW/{$imageW}/movie/Kung_Fu_Panda_two/categories/3D_Pix/item/{item}/_back/2?$uniqueID={$uniqueID}";
 		System.out.println("Found ? " + URL.contains("{item}"));
 		
@@ -26,27 +56,23 @@ public class Regex {
 			System.out.println("Match not found");
 		}
 		
+		String url = "http://localhost/htc/android/htc-incredible/259164-gpid";
+		System.out.println(url.substring(url.lastIndexOf('/')+1).split("-")[0]);
+		Pattern regex = Pattern.compile("/(\\d+)\\-gpid$"); 
+		Matcher tagmatch = regex.matcher( url );
+		tagmatch.find();
+		System.out.println(tagmatch.group(1));		
+	}
 
-		//embedded modifiers
-		String ftw = "f\nftw";
-		System.out.println(ftw.matches("(?si).*Ftw.*"));
-		pattern = Pattern.compile(".*ftw.*", Pattern.DOTALL);
-		matcher = pattern.matcher("f\nftw");
-		System.out.println(matcher.matches());
-		
-		matcher();
-		regex2();
-		regexforfieldset();
-		splitTest();
-		//regexCausingStackOverflowException();
-		
-		punctuationRegex();
-		System.out.println("Is 7 a prime?" + primeRegex(7));
-		
-		//reluctant quantifiers  example
-		reluctantQuant();
-		//content -type regex
-		contentType();
+	private static void escapeDoubleQuote() {
+		System.out.println("afa'adff\\asdf".replaceAll("([\\'\\\\])", "\\\\$1"));		
+	}
+
+	private static void patternforsinglequote() {
+		String input = "abcd'efg'hij";
+		Matcher matcher = Pattern.compile("'.*'").matcher(input);
+		System.out.println("Found ? " + matcher.find() + 
+				           "\nFound what ? "+ matcher.group());
 	}
 
 	private static void contentType() {
@@ -94,7 +120,7 @@ public class Regex {
 		
 	}
 
-	public static void regex2() {
+	public static void replaceTextBetweenParentheses() {
 		String patternStr = "\\((\\w+)\\)";
 		String replaceStr = "<$1>";
 		Pattern pattern = Pattern.compile(patternStr);
@@ -139,10 +165,5 @@ public class Regex {
 			System.out.println(matcher.group(1));
 		else
 			System.out.println("Input html does not have a fieldset");		
-	}
-
-	private static void splitTest() {
-		String str = "x , y";
-		System.out.println(Arrays.toString(str.split("\\s*,\\s*")));
 	}
 }

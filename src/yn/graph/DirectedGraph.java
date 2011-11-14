@@ -7,7 +7,13 @@ package yn.graph;
  * A class representing a directed graph.  Internally, the class is represented
  * by an adjacency list.
  */
-import java.util.*; // For HashMap, HashSet
+import java.util.Collections;
+import java.util.HashMap;
+import java.util.HashSet;
+import java.util.Iterator;
+import java.util.Map;
+import java.util.NoSuchElementException;
+import java.util.Set;
 
 public final class DirectedGraph<T> implements Iterable<T> {
 	/*

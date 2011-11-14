@@ -28,6 +28,12 @@ public class ThreadJoin {
         }
     }
 
+    /**
+     * These comments are different color from the inline comments
+     * 
+     * @param args
+     * @throws InterruptedException
+     */
     public static void main(String args[]) throws InterruptedException {
 
 
