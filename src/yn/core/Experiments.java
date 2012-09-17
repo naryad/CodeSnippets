@@ -16,6 +16,7 @@ import java.util.ArrayDeque;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Collections;
+import java.util.Date;
 import java.util.LinkedList;
 import java.util.List;
 import java.util.PriorityQueue;
@@ -25,8 +26,17 @@ import java.util.Stack;
 import java.util.concurrent.atomic.AtomicBoolean;
 import java.util.concurrent.atomic.AtomicInteger;
 
-public class Experiments {
+import org.apache.commons.codec.binary.Base64;
+
+public class Experiments{
 	public static void main(String[] args) throws Exception {
+		byte [] bytes = Base64.encodeBase64("poorna123$".getBytes());
+		System.out.println(new String(bytes));
+		System.out.println(new String(Base64.decodeBase64(new String(bytes))));
+		
+		System.out.println(tryFinally());
+		
+		intAssignmentToNull();
 		
 	    bigInteger();
           
@@ -42,7 +52,9 @@ public class Experiments {
 		
 		concurrentStuff();
 		
-		reverseString("This world is whatever");
+		reverseStringParts("This world is whatever");
+		
+		System.out.println(reverseString("Java is a object oriented language."));
 		
 		kRotateWord("ABCDEF", 3);
 		
@@ -53,9 +65,52 @@ public class Experiments {
 		priorityQueue();
 		
 		//executeCommandAndReadOutput();
-		executeJps();
+		
+		//executeJps();
+		
+		stringToBytes();
+		
+	}
+
+	public static String reverseString(String str){
+		int len = str.length();
+	    return len<=1 ? str : (
+	        reverseString(str.substring(len/2))+
+	        reverseString(str.substring(0, len/2))
+	    );
 	}
 	
+	private static void intAssignmentToNull() {
+		//Integer i = null; int j = i; //throws null pointer exception		
+	}
+
+	private static boolean tryFinally() {
+		try {
+			return true;
+		} finally {
+			return false;
+		}
+	}
+	
+	private int i = 10;
+	private static void cloneObject() {
+		Experiments expClone = null;
+		Experiments exp = new Experiments();
+		try {
+			expClone = (Experiments) exp.clone();
+		} catch (CloneNotSupportedException e) {
+			e.printStackTrace();
+		}
+		System.out.println("i in cloned object " + expClone.i);
+	}
+
+	/**
+	 * string to bytes
+	 */
+	private static void stringToBytes() {
+		System.out.println("Ascii code of 9 = " + Arrays.toString("9".getBytes()));		
+	}
+
 	private static void executeCommandAndReadOutput() throws IOException {
 		Process p = Runtime.getRuntime().exec("jps -l");
 		final char[] buffer = new char[0x10000];
@@ -147,7 +202,7 @@ public class Experiments {
 		
 		//to convert a string to a byte
 		System.out.println( Integer.toHexString(Integer.parseInt("1e", 16)));
-		
+		System.out.println("255 in hex " + Integer.toHexString(255));
 		char n = 'n';
 		System.out.println("'" + n + "'" + " --> " +(int)n + " --> " + toHex(String.valueOf(n)));
 				
@@ -242,7 +297,7 @@ public class Experiments {
 		}
 		return sbuf.toString();
 	}
-	private static String reverseString(String string) {
+	private static String reverseStringParts(String string) {
 		String reverseline = "This world is whatever";
 		Stack<String> s = new java.util.Stack<String>();
 		String [] reverse = reverseline.split("\\s");

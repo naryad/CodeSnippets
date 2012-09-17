@@ -18,6 +18,7 @@ public class HeapSorter
         while (n>1)
         {
             n--;
+            System.out.println(a[n]);
             exchange (0, n);
             downheap (0);
         } 

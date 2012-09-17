@@ -7,6 +7,14 @@ import java.util.List;
 
 public class GenericExperiments {
 	public static void main(String[] args) {
+		List<String> x = new ArrayList<String>();
+		
+		// Gives error because type information is erased at runtime.
+		/*
+		if  (x instanceof ArrayList<String>) {
+			
+		}*/
+		
 		Date date = new Date();
 		System.out.println(date.getClass().getTypeParameters());
 		List<?> l = new ArrayList<String>();

@@ -1,10 +1,8 @@
 package yn.regex;
 
 import java.util.Arrays;
-import java.util.Collections;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
-import java.util.regex.PatternSyntaxException;
 
 public class Regex {
 	
@@ -27,6 +25,16 @@ public class Regex {
 		
 		//content -type regex
 		contentType();
+		
+		splitwithpipe();
+	}
+
+	private static void splitwithpipe() {
+		String s = "asadsdas357902||190||RUE RACHELLE||ST|||LES CÈDRES|J7T1J9|QC";
+		for (int i = 0; i < 10; i++) {
+			String a[] = s.split("asadsdas357902||", i);	
+			System.out.println(Arrays.toString(a));
+		}
 	}
 
 	private static void replaceSpanInAHTML() {

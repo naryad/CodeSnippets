@@ -15,8 +15,7 @@ class BeeperControl {
 				System.out.println("beep");
 			}
 		};
-		final ScheduledFuture<?> beeperHandle = scheduler.scheduleAtFixedRate(
-				beeper, 10, 10, SECONDS);
+		final ScheduledFuture<?> beeperHandle = scheduler.scheduleAtFixedRate( beeper, 10, 10, SECONDS);
 		scheduler.schedule(new Runnable() {
 			public void run() {
 				beeperHandle.cancel(true);
@@ -28,5 +27,6 @@ class BeeperControl {
 public class ScheduledExecutor {
 	public static void main(String[] args) {
 		new BeeperControl().beepForAnHour();
+		System.out.println("here");
 	}
 }

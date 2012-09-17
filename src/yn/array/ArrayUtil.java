@@ -6,7 +6,6 @@ import java.util.Random;
 
 public class ArrayUtil {
 	public static void main(String[] args) {
-
 		//reversing array
 		int [] a = {1,35,7,78,9};
 		Collections.shuffle(Arrays.asList(a));

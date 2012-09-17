@@ -21,6 +21,10 @@ package yn.datastruct;
  * @author Mark Allen Weiss
  */
 public class BinarySearchTree {
+
+    /** The tree root. */
+    protected BinaryNode root;
+	
     /**
      * Construct the tree.
      */
@@ -205,10 +209,6 @@ public class BinarySearchTree {
         
         return null;         // Not found
     }
-    
-    /** The tree root. */
-    protected BinaryNode root;
-    
     
     // HashCodeEqualsCorrectImplementation program
     public static void main( String [ ] args ) {
