@@ -22,7 +22,7 @@
 	<classpathentry kind="lib" path="lib/pop3.jar"/>
 	<classpathentry kind="lib" path="lib/smtp.jar"/>
 	<classpathentry kind="lib" path="lib/mysql-connector-java-5.1.16-bin.jar"/>
-	<classpathentry kind="lib" path="lib/spymemcached-2.7.3.jar"/>
+	<classpathentry kind="lib" path="lib/spymemcached-2.7.3.jar" sourcepath="C:/Users/HP/.m2/repository/com/google/code/simple-spring-memcached/spymemcached/2.7.3/spymemcached-2.7.3-sources.jar"/>
 	<classpathentry kind="lib" path="lib/commons-codec-1.5.jar"/>
 	<classpathentry kind="output" path="build/classes"/>
 </classpath>

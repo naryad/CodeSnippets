@@ -1,6 +1,5 @@
-package yn.core;
+package yn.security;
 
-import java.io.IOException;
 import java.security.GeneralSecurityException;
 
 import javax.crypto.Cipher;
