@@ -7,6 +7,7 @@ import java.util.regex.Pattern;
 public class Regex {
 	
 	public static void main(String[] args) {
+		negativeLookBehind();
 		patternforsinglequote();
 		urlPartMatcher();
 		escapeDoubleQuote();
@@ -27,6 +28,11 @@ public class Regex {
 		contentType();
 		
 		splitwithpipe();
+	}
+
+	private static void negativeLookBehind() {
+		String x = "dr. fucker.";
+		System.out.println(x.replaceAll("(?<!mr|mrs|ms|dr)(\\s*[\\.\\?\\!]\\s*)","\n"));		
 	}
 
 	private static void splitwithpipe() {
