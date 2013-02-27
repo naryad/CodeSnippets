@@ -5,12 +5,18 @@ import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.Date;
 
+import org.apache.commons.lang.time.DateUtils;
 import org.joda.time.DateTime;
 import org.joda.time.DateTimeZone;
 
 public class DateExperiments {
 	public static void main(String[] args) throws ParseException {
-		String dateStr = "2011-09-19T155711.000-0700";
+		String dateStr = "02/13/2013";
+		String[] DATE_FORMATS = new String[]{"yyyy-MM-dd'T'HH:mm:ss.S", "yyyy-MM-dd HH:mm:ss", "MM/dd/yyyy", "yyyy-MM-dd"};
+		System.out.println(DateUtils.parseDateStrictly(dateStr, DATE_FORMATS));
+		
+		System.out.println(new Date().toString());
+		dateStr = "2011-09-19T155711.000-0700";
 		String pattern = "yyyy-MM-dd'T'HHmmss.SSSZ";
 		Date date = new SimpleDateFormat(pattern).parse(dateStr);
 		System.out.println(date.toString());

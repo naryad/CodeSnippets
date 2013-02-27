@@ -16,13 +16,12 @@ import java.util.ArrayDeque;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Collections;
-import java.util.Date;
 import java.util.LinkedList;
 import java.util.List;
 import java.util.PriorityQueue;
 import java.util.Queue;
-import java.util.Scanner;
 import java.util.Stack;
+import java.util.concurrent.TimeUnit;
 import java.util.concurrent.atomic.AtomicBoolean;
 import java.util.concurrent.atomic.AtomicInteger;
 
@@ -35,6 +34,8 @@ public class Experiments{
 		System.out.println(new String(Base64.decodeBase64(new String(bytes))));
 		
 		System.out.println(tryFinally());
+		
+		testNanoTime();
 		
 		intAssignmentToNull();
 		
@@ -70,6 +71,15 @@ public class Experiments{
 		
 		stringToBytes();
 		
+	}
+
+	private static void testNanoTime() {
+		long startTime = System.nanoTime();
+		System.out.println("Test");
+		long endTime = System.nanoTime();
+		long elapsedTime = endTime - startTime;
+		System.out.println("Time take for inserting into console " + (double)elapsedTime / 1000000000.0);		
+		System.out.println("Time take for inserting into console " + TimeUnit.MICROSECONDS.convert(elapsedTime, TimeUnit.NANOSECONDS));
 	}
 
 	public static String reverseString(String str){
@@ -276,7 +286,8 @@ public class Experiments{
 	}
 	private static void exploreSystemAndRuntime() throws IOException {
 		System.gc();//suggesting jvm to run garbaze collection
-		System.out.println(Runtime.getRuntime().freeMemory());
+		System.out.println("Free memory " + Runtime.getRuntime().freeMemory());
+		System.out.println("Available processors " + Runtime.getRuntime().availableProcessors());
 		System.getProperty("user.dir");
 		System.runFinalization();
 		System.console();
