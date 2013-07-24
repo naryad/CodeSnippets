@@ -3,6 +3,7 @@ package yn.date;
 import java.sql.Timestamp;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
+import java.util.Calendar;
 import java.util.Date;
 
 import org.apache.commons.lang.time.DateUtils;
@@ -11,12 +12,10 @@ import org.joda.time.DateTimeZone;
 
 public class DateExperiments {
 	public static void main(String[] args) throws ParseException {
-		String dateStr = "02/13/2013";
-		String[] DATE_FORMATS = new String[]{"yyyy-MM-dd'T'HH:mm:ss.S", "yyyy-MM-dd HH:mm:ss", "MM/dd/yyyy", "yyyy-MM-dd"};
-		System.out.println(DateUtils.parseDateStrictly(dateStr, DATE_FORMATS));
 		
-		System.out.println(new Date().toString());
-		dateStr = "2011-09-19T155711.000-0700";
+		parseDateUsingCommonsDateUtils();
+		
+		String dateStr = "2011-09-19T155711.000-0700";
 		String pattern = "yyyy-MM-dd'T'HHmmss.SSSZ";
 		Date date = new SimpleDateFormat(pattern).parse(dateStr);
 		System.out.println(date.toString());
@@ -57,6 +56,29 @@ public class DateExperiments {
 		
 	
 		jodaExperiments();
+		getDay();
+		dateFormat();
+	}
+
+	private static void parseDateUsingCommonsDateUtils() {
+		String startDate = "2001-12-12 01:01:01";
+		try {
+			System.out.println(DateUtils.parseDateStrictly(startDate, 
+					new String[]{"yyyy-MM-dd HH:mm:ss", "yyyy-MM-dd"}));
+		} catch (ParseException e) {
+			System.out.println("Error occurred while parsing the start date");
+		}		
+	}
+
+	private static void dateFormat() throws ParseException {
+		String dateStr = "2011-09-19T155711.000-0700";
+		String pattern = "yyyy-MM-dd'T'HHmmss.SSSZ";
+		Date date = new SimpleDateFormat(pattern).parse(dateStr);
+		System.out.println(date.toString());
+		
+		System.out.println(new SimpleDateFormat("dd-MMM-yy").format(date));
+		System.out.println(new SimpleDateFormat("h:mm:ss a").format(date));
+		System.out.println(new SimpleDateFormat("dd/MM/yy H:m").format(date));
 	}
 
 	private static void jodaExperiments() {
@@ -69,4 +91,16 @@ public class DateExperiments {
 		System.out.println(new DateTime(gmtPlusOne).toString());
 		System.out.println(new DateTime(gmtMinusOne).toString());
 	}
+	
+	public static void getDay() {
+		Calendar calendar = Calendar.getInstance();
+		calendar.set(Calendar.YEAR, 2011);
+		calendar.set(Calendar.MONTH, 11);
+		calendar.set(Calendar.DATE, 7);
+		System.out.println(calendar.getTime().toString());
+		System.out.println("Month = " + calendar.get(Calendar.MONTH));
+		System.out.println();
+	}
+	
+	
 }

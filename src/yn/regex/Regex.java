@@ -9,6 +9,7 @@ public class Regex {
 	
 	public static void main(String[] args) {
 		findBannedWords();
+		negativeLookBehind();
 		patternforsinglequote();
 		urlPartMatcher();
 		escapeDoubleQuote();
@@ -51,6 +52,11 @@ public class Regex {
 	   }
 	}
 	
+	private static void negativeLookBehind() {
+		String x = "dr. fucker.";
+		System.out.println(x.replaceAll("(?<!mr|mrs|ms|dr)(\\s*[\\.\\?\\!]\\s*)","\n"));		
+	}
+
 	private static void splitwithpipe() {
 		String s = "asadsdas357902||190||RUE RACHELLE||ST|||LES C�DRES|J7T1J9|QC";
 		for (int i = 0; i < 10; i++) {
