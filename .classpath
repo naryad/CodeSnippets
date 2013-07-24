@@ -24,5 +24,12 @@
 	<classpathentry kind="lib" path="lib/mysql-connector-java-5.1.16-bin.jar"/>
 	<classpathentry kind="lib" path="lib/spymemcached-2.7.3.jar" sourcepath="C:/Users/HP/.m2/repository/com/google/code/simple-spring-memcached/spymemcached/2.7.3/spymemcached-2.7.3-sources.jar"/>
 	<classpathentry kind="lib" path="lib/commons-codec-1.5.jar"/>
+	<classpathentry kind="lib" path="lib/Classifier4J-0.6.jar"/>
+	<classpathentry kind="lib" path="lib/textcat-1.0.1.jar"/>
+	<classpathentry kind="lib" path="lib/thumbnailator-0.4.5.jar"/>
+	<classpathentry kind="lib" path="lib/aws-java-sdk-1.4.0.jar"/>
+	<classpathentry kind="lib" path="lib/commons-logging-1.1.1.jar"/>
+	<classpathentry kind="lib" path="lib/commons-net-1.4.1.jar"/>
+	<classpathentry kind="lib" path="lib/commons-io-2.4.jar"/>
 	<classpathentry kind="output" path="build/classes"/>
 </classpath>

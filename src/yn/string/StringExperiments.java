@@ -103,6 +103,8 @@ public class StringExperiments {
 	 * splits on ^ character
 	 */
 	private static void split() {
+		String s = "sysadmin";
+		System.out.println(s.split("\\s+")[0]);
 		String x = "a^b^c";
 		System.out.println(Arrays.toString(x.split("\\^")));		
 	}

@@ -1,5 +1,6 @@
 package yn.regex;
 
+import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
@@ -7,6 +8,7 @@ import java.util.regex.Pattern;
 public class Regex {
 	
 	public static void main(String[] args) {
+		findBannedWords();
 		patternforsinglequote();
 		urlPartMatcher();
 		escapeDoubleQuote();
@@ -29,8 +31,28 @@ public class Regex {
 		splitwithpipe();
 	}
 
+	private static void findBannedWords() {
+		final ArrayList<String> keywords = new ArrayList<String>();
+		keywords.add("fuck");
+		keywords.add("shit");
+		keywords.add("asshole");
+		
+		String input = "what the fuck";
+		
+		String bannedRegex = "";
+		for (String keyword: keywords){
+			bannedRegex = bannedRegex + ".*" + keyword + ".*" + "|";
+		}
+		
+		Pattern pt = Pattern.compile(bannedRegex.substring(0, bannedRegex.length()-1));
+	    Matcher mt = pt.matcher(input);
+	    if (mt.matches()) {
+	        System.out.println("message can't be processed because it doesn't satisfy the rule ");
+	   }
+	}
+	
 	private static void splitwithpipe() {
-		String s = "asadsdas357902||190||RUE RACHELLE||ST|||LES CÈDRES|J7T1J9|QC";
+		String s = "asadsdas357902||190||RUE RACHELLE||ST|||LES Cï¿½DRES|J7T1J9|QC";
 		for (int i = 0; i < 10; i++) {
 			String a[] = s.split("asadsdas357902||", i);	
 			System.out.println(Arrays.toString(a));
