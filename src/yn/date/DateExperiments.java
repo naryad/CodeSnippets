@@ -6,11 +6,15 @@ import java.text.SimpleDateFormat;
 import java.util.Calendar;
 import java.util.Date;
 
+import org.apache.commons.lang.time.DateUtils;
 import org.joda.time.DateTime;
 import org.joda.time.DateTimeZone;
 
 public class DateExperiments {
 	public static void main(String[] args) throws ParseException {
+		
+		parseDateUsingCommonsDateUtils();
+		
 		String dateStr = "2011-09-19T155711.000-0700";
 		String pattern = "yyyy-MM-dd'T'HHmmss.SSSZ";
 		Date date = new SimpleDateFormat(pattern).parse(dateStr);
@@ -54,6 +58,16 @@ public class DateExperiments {
 		jodaExperiments();
 		getDay();
 		dateFormat();
+	}
+
+	private static void parseDateUsingCommonsDateUtils() {
+		String startDate = "2001-12-12 01:01:01";
+		try {
+			System.out.println(DateUtils.parseDateStrictly(startDate, 
+					new String[]{"yyyy-MM-dd HH:mm:ss", "yyyy-MM-dd"}));
+		} catch (ParseException e) {
+			System.out.println("Error occurred while parsing the start date");
+		}		
 	}
 
 	private static void dateFormat() throws ParseException {
