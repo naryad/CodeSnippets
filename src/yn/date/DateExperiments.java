@@ -5,6 +5,7 @@ import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.Calendar;
 import java.util.Date;
+import java.util.TimeZone;
 
 import org.apache.commons.lang.time.DateUtils;
 import org.joda.time.DateTime;
@@ -12,6 +13,10 @@ import org.joda.time.DateTimeZone;
 
 public class DateExperiments {
 	public static void main(String[] args) throws ParseException {
+		String gmtDate = "2013-10-03";
+		SimpleDateFormat gmtSdf = new SimpleDateFormat("yyyy-MM-dd");
+		gmtSdf.setTimeZone(TimeZone.getTimeZone("GMT"));
+		System.out.println(gmtSdf.parse(gmtDate).getTime());
 		
 		parseDateUsingCommonsDateUtils();
 		

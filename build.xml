@@ -1,0 +1,139 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!-- WARNING: Eclipse auto-generated file.
+              Any modifications will be overwritten.
+              To include a user specific buildfile here, simply create one in the same
+              directory with the processing instruction <?eclipse.ant.import?>
+              as the first entry and export the buildfile again. -->
+<project basedir="." default="build" name="CodeSnippets">
+    <property environment="env"/>
+    <property name="ECLIPSE_HOME" value="../../../../../Applications/eclipse"/>
+    <property name="debuglevel" value="source,lines,vars"/>
+    <property name="target" value="1.6"/>
+    <property name="source" value="1.6"/>
+    <path id="Web App Libraries.libraryclasspath"/>
+    <path id="EAR Libraries.libraryclasspath"/>
+    <path id="JUnit 4.libraryclasspath">
+        <pathelement location="${ECLIPSE_HOME}/plugins/org.junit_4.10.0.v4_10_0_v20120426-0900/junit.jar"/>
+        <pathelement location="${ECLIPSE_HOME}/plugins/org.hamcrest.core_1.1.0.v20090501071000.jar"/>
+    </path>
+    <path id="CodeSnippets.classpath">
+        <pathelement location="build/classes"/>
+        <path refid="Web App Libraries.libraryclasspath"/>
+        <path refid="EAR Libraries.libraryclasspath"/>
+        <path refid="JUnit 4.libraryclasspath"/>
+        <pathelement location="lib/commons-lang-2.5.jar"/>
+        <pathelement location="lib/jsoup-1.6.1.jar"/>
+        <pathelement location="lib/jackson-all-1.9.0.jar"/>
+        <pathelement location="lib/httpclient-4.1.1.jar"/>
+        <pathelement location="lib/httpcore-4.1.jar"/>
+        <pathelement location="lib/joda-time-2.0.jar"/>
+        <pathelement location="lib/gson-1.6.jar"/>
+        <pathelement location="lib/dsn.jar"/>
+        <pathelement location="lib/imap.jar"/>
+        <pathelement location="lib/mailapi.jar"/>
+        <pathelement location="lib/pop3.jar"/>
+        <pathelement location="lib/smtp.jar"/>
+        <pathelement location="lib/mysql-connector-java-5.1.16-bin.jar"/>
+        <pathelement location="lib/spymemcached-2.7.3.jar"/>
+        <pathelement location="lib/commons-codec-1.5.jar"/>
+        <pathelement location="lib/Classifier4J-0.6.jar"/>
+        <pathelement location="lib/textcat-1.0.1.jar"/>
+        <pathelement location="lib/thumbnailator-0.4.5.jar"/>
+        <pathelement location="lib/aws-java-sdk-1.4.0.jar"/>
+        <pathelement location="lib/commons-logging-1.1.1.jar"/>
+        <pathelement location="lib/commons-net-1.4.1.jar"/>
+        <pathelement location="lib/commons-io-2.4.jar"/>
+    </path>
+    <target name="init">
+        <mkdir dir="build/classes"/>
+        <copy includeemptydirs="false" todir="build/classes">
+            <fileset dir="src">
+                <exclude name="**/*.launch"/>
+                <exclude name="**/*.java"/>
+            </fileset>
+        </copy>
+    </target>
+    <target name="clean">
+        <delete dir="build/classes"/>
+    </target>
+    <target depends="clean" name="cleanall"/>
+    <target depends="build-subprojects,build-project" name="build"/>
+    <target name="build-subprojects"/>
+    <target depends="init" name="build-project">
+        <echo message="${ant.project.name}: ${ant.file}"/>
+        <javac debug="true" debuglevel="${debuglevel}" destdir="build/classes" includeantruntime="false" source="${source}" target="${target}">
+            <src path="src"/>
+            <classpath refid="CodeSnippets.classpath"/>
+        </javac>
+    </target>
+    <target description="Build all projects which reference this project. Useful to propagate changes." name="build-refprojects"/>
+    <target description="copy Eclipse compiler jars to ant lib directory" name="init-eclipse-compiler">
+        <copy todir="${ant.library.dir}">
+            <fileset dir="${ECLIPSE_HOME}/plugins" includes="org.eclipse.jdt.core_*.jar"/>
+        </copy>
+        <unzip dest="${ant.library.dir}">
+            <patternset includes="jdtCompilerAdapter.jar"/>
+            <fileset dir="${ECLIPSE_HOME}/plugins" includes="org.eclipse.jdt.core_*.jar"/>
+        </unzip>
+    </target>
+    <target description="compile project with Eclipse compiler" name="build-eclipse-compiler">
+        <property name="build.compiler" value="org.eclipse.jdt.core.JDTCompilerAdapter"/>
+        <antcall target="build"/>
+    </target>
+    <target name="Classifier">
+        <java classname="yn.text.Classifier" failonerror="true" fork="yes">
+            <classpath refid="CodeSnippets.classpath"/>
+        </java>
+    </target>
+    <target name="ImageExperiments">
+        <java classname="yn.image.ImageExperiments" failonerror="true" fork="yes">
+            <classpath refid="CodeSnippets.classpath"/>
+        </java>
+    </target>
+    <target name="LanguageGuesser">
+        <java classname="yn.text.LanguageGuesser" failonerror="true" fork="yes">
+            <arg line="i am doing good"/>
+            <classpath refid="CodeSnippets.classpath"/>
+        </java>
+    </target>
+    <target name="MemcachedExperiments">
+        <java classname="yn.memcached.MemcachedExperiments" failonerror="true" fork="yes">
+            <classpath refid="CodeSnippets.classpath"/>
+        </java>
+    </target>
+    <target name="NormalizeURL">
+        <java classname="yn.networking.NormalizeURL" failonerror="true" fork="yes">
+            <classpath refid="CodeSnippets.classpath"/>
+        </java>
+    </target>
+    <target name="Regex">
+        <java classname="yn.regex.Regex" failonerror="true" fork="yes">
+            <classpath refid="CodeSnippets.classpath"/>
+        </java>
+    </target>
+    <target name="S3Experiments">
+        <java classname="yn.aws.S3Experiments" failonerror="true" fork="yes">
+            <classpath refid="CodeSnippets.classpath"/>
+        </java>
+    </target>
+    <target name="ScheduledExecutor">
+        <java classname="yn.concurrent.ScheduledExecutor" failonerror="true" fork="yes">
+            <classpath refid="CodeSnippets.classpath"/>
+        </java>
+    </target>
+    <target name="ScheduledExecutor1">
+        <java classname="yn.concurrent.ScheduledExecutor1" failonerror="true" fork="yes">
+            <classpath refid="CodeSnippets.classpath"/>
+        </java>
+    </target>
+    <target name="StringExperiments">
+        <java classname="yn.string.StringExperiments" failonerror="true" fork="yes">
+            <classpath refid="CodeSnippets.classpath"/>
+        </java>
+    </target>
+    <target name="Summarizer">
+        <java classname="yn.text.Summarizer" failonerror="true" fork="yes">
+            <classpath refid="CodeSnippets.classpath"/>
+        </java>
+    </target>
+</project>
