@@ -8,6 +8,7 @@ import java.util.regex.Pattern;
 public class Regex {
 	
 	public static void main(String[] args) {
+		matches();
 		findBannedWords();
 		negativeLookBehind();
 		patternforsinglequote();
@@ -30,6 +31,11 @@ public class Regex {
 		contentType();
 		
 		splitwithpipe();
+	}
+
+	private static void matches() {
+		String link = "https://pic.twitter.com/fdsa/fasdfdads";
+		System.out.println("starts with twitter.com " + link.matches("^http(s)?://(pic.)?twitter.com.*"));
 	}
 
 	private static void findBannedWords() {
